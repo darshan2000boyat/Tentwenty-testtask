@@ -1,22 +1,25 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f8f8;
+  --foreground: #f8f8f8;
 }
 
 @theme inline {
+  --color-primary-600: #1C64F2;
+  --color-primary-700: #1A56DB;
+  --color-success: #DEF7EC;
+  --color-background-dashboard: #f8f8f8;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-inter: 'Inter', sans-serif;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+  --font-weight-600: 600;
+  --font-weight-400: 400;
+  --text-heading: 40px / 60px;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
