@@ -6,9 +6,11 @@ import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
-  useReactTable,
-  ColumnDef,
+  useReactTable
 } from "@tanstack/react-table";
+import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 interface Task {
   id: number;
@@ -29,14 +31,16 @@ interface Timesheet {
   status: "COMPLETED" | "INCOMPLETE" | "MISSING";
 }
 
-interface TimesheetTableRow {
+
+type TimesheetTableRow = {
   id: number;
-  week: number;
+  week: string;
   dateRange: string;
-  status: "COMPLETED" | "INCOMPLETE" | "MISSING";
-  totalHours: number;
+  status: string;
   action: string;
-}
+  totalHours: number;
+};
+
 
 export default function TimesheetsPage() {
   const [dateRangeFilter, setDateRangeFilter] = useState<string>("Date Range");
@@ -44,6 +48,7 @@ export default function TimesheetsPage() {
   const [timesheets, setTimesheets] = useState<Timesheet[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   // Fetch timesheets from API
   const fetchTimesheets = async () => {
@@ -74,7 +79,7 @@ export default function TimesheetsPage() {
   const tableData: TimesheetTableRow[] = useMemo(() => {
     return timesheets.map((timesheet) => ({
       id: timesheet.id,
-      week: timesheet.week,
+      week: timesheet.week.toString(),
       dateRange: timesheet.dateRange,
       status: timesheet.status,
       totalHours: timesheet.totalHours,
@@ -109,10 +114,13 @@ export default function TimesheetsPage() {
     // - Navigate to /timesheets/[id] for View
     // - Open an edit modal for Update
     // - Open a create form for Create
+
+    if(action === "View")
+      router.push(`/timesheets/${timesheetId}`);
   };
 
   // Columns configuration
-  const columns = useMemo<ColumnDef<TimesheetTableRow>[]>(() => {
+  const columns = useMemo(() => {
     const columnHelper = createColumnHelper<TimesheetTableRow>();
 
     return [
@@ -143,7 +151,7 @@ export default function TimesheetsPage() {
           return (
             <button
               onClick={() => handleActionClick(row.id, row.action)}
-              className="px-4 py-2 rounded-md text-sm font-medium text-blue-700"
+              className="px-4 py-2 rounded-md text-sm font-medium text-blue-700 cursor-pointer"
             >
               {info.getValue()}
             </button>
@@ -180,33 +188,7 @@ export default function TimesheetsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <h1 className="text-xl font-bold text-black font-inter">
-              ticktock
-            </h1>
-            <nav className="text-gray-600 font-semibold">Timesheets</nav>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-gray-700">John Doe</span>
-            <svg
-              className="w-4 h-4 text-gray-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
-        </div>
-      </header>
-
+      <Header />
       <main className="max-w-7xl mx-auto px-6 mt-6">
         <div className="bg-white text-black rounded-lg shadow-sm p-6 overflow-x-auto w-full">
           <h2 className="text-2xl font-bold mb-6">Your Timesheets</h2>
@@ -355,9 +337,7 @@ export default function TimesheetsPage() {
           </div>
         </div>
 
-        <footer className="text-center mt-4 text-gray-500 bg-white shadow p-8 rounded-lg text-sm">
-          © 2024 tentwenty. All rights reserved.
-        </footer>
+        <Footer />
       </main>
     </div>
   );

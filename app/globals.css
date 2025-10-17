@@ -7,8 +7,10 @@
 }
 
 @theme inline {
+  --color-primary-100: #E1EFFE;
   --color-primary-600: #1C64F2;
   --color-primary-700: #1A56DB;
+  --color-primary-800: #1E429F;
   --color-success: #DEF7EC;
   --color-background-dashboard: #f8f8f8;
   --color-background: var(--background);

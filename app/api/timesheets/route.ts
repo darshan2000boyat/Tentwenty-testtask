@@ -1,8 +1,9 @@
 // app/api/timesheets/route.js
-import { calculateStatus, timesheets } from '@/utils/timesheetHelper';
+import { calculateStatus, readTimesheets } from '@/utils/timesheetHelper';
 import { NextRequest, NextResponse } from 'next/server';
 
-// GET /api/timesheets
+const timesheets = readTimesheets();
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const status = searchParams.get('status');
