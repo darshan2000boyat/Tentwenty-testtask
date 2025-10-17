@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Navigation from "@/components/Header";
 import { FaPlus } from "react-icons/fa6";
 import { FiMoreHorizontal } from "react-icons/fi";
+import NewEntryModal from "@/components/NewEntryModel";
 
 interface Task {
   id: number;
@@ -82,6 +83,8 @@ const initialData: DayEntry[] = [
 export default function TimesheetPage() {
   const [data, setData] = useState<DayEntry[]>(initialData);
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const totalHours = data.reduce(
     (sum, d) => sum + d.tasks.reduce((s, t) => s + t.hours, 0),
@@ -91,6 +94,7 @@ export default function TimesheetPage() {
   const percentage = Math.min((totalHours / totalTarget) * 100, 100);
 
   const handleAddTask = (date: string) => {
+    setIsOpen(true);
     setData((prev) =>
       prev.map((d) =>
         d.date === date
@@ -112,6 +116,20 @@ export default function TimesheetPage() {
     field: keyof Task,
     value: string | number
   ) => {
+    if (field === 'hours') {
+      const newTotal = data.reduce((sum, d) => 
+        sum + d.tasks.reduce((s, t) => 
+          t.id === taskId ? s + Number(value) : s + t.hours, 
+        0), 
+      0);
+      
+      if (newTotal > 40) {
+        setErrorMessage("Total hours cannot exceed 40 hours per week");
+        return;
+      }
+      setErrorMessage("");
+    }
+
     setData((prev) =>
       prev.map((d) =>
         d.date === date
@@ -141,6 +159,11 @@ export default function TimesheetPage() {
       <Navigation />
 
       <main className="max-w-7xl mx-auto px-6 mt-6">
+        {errorMessage && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+            {errorMessage}
+          </div>
+        )}
         <div className="mt-10 border border-gray-200 rounded-lg shadow-sm p-6 bg-white">
           <Header totalHours={totalHours} percentage={percentage} />
 
@@ -188,6 +211,7 @@ export default function TimesheetPage() {
                   </span>
                 </button>
               </div>
+              <NewEntryModal isOpen={isOpen} setIsOpen={setIsOpen} date={day.date} />
             </div>
           ))}
         </div>
@@ -232,20 +256,20 @@ const Header = ({
 };
 
 type MoreOptionsProps = {
-    setSelectedTaskId: React.Dispatch<React.SetStateAction<number | null>>;
-    selectedTaskId: number | null;
-    task: Task;
-    day: DayEntry;
-    handleDeleteTask: (date: string, taskId: number) => void;
-  };
-  
-  const MoreOptions = ({
-    setSelectedTaskId,
-    selectedTaskId,
-    task,
-    day,
-    handleDeleteTask,
-  }: MoreOptionsProps) => {
+  setSelectedTaskId: React.Dispatch<React.SetStateAction<number | null>>;
+  selectedTaskId: number | null;
+  task: Task;
+  day: DayEntry;
+  handleDeleteTask: (date: string, taskId: number) => void;
+};
+
+const MoreOptions = ({
+  setSelectedTaskId,
+  selectedTaskId,
+  task,
+  day,
+  handleDeleteTask,
+}: MoreOptionsProps) => {
   return (
     <div className="relative">
       <FiMoreHorizontal
