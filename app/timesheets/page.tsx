@@ -192,7 +192,7 @@ export default function TimesheetsPage() {
               <option value="last90days">Last 90 days</option>
             </select>
 
-            <select
+            <select role="combobox"  aria-label="Status"
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
               className="px-2 py-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"

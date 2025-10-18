@@ -195,7 +195,7 @@
         "id": 1,
         "title": "API Development",
         "description": "Feature Implementation",
-        "hours": 15,
+        "hours": 7,
         "date": "2024-01-22",
         "project": "Project A",
         "typeOfWork": "Feature Development"
@@ -217,10 +217,17 @@
         "date": "2024-01-26",
         "project": "Project A",
         "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 4,
+        "title": "Created Filter feature in timesheet table.",
+        "description": "Project A",
+        "hours": 5,
+        "date": "2024-01-22"
       }
     ],
-    "totalHours": 40,
-    "status": "COMPLETED"
+    "totalHours": 37,
+    "status": "INCOMPLETE"
   },
   {
     "id": 5,
@@ -289,19 +296,10 @@
         "date": "2024-02-12",
         "project": "Project A",
         "typeOfWork": "Feature Development"
-      },
-      {
-        "id": 2,
-        "title": "API Development",
-        "description": "Performance Testing",
-        "hours": 15,
-        "date": "2024-02-14",
-        "project": "Project A",
-        "typeOfWork": "Feature Development"
       }
     ],
-    "totalHours": 40,
-    "status": "COMPLETED"
+    "totalHours": 25,
+    "status": "INCOMPLETE"
   },
   {
     "id": 8,
