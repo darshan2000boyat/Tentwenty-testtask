@@ -21,7 +21,7 @@ interface Task {
 }
 
 interface DayEntry {
-  date: string; // e.g., "2024-01-21"
+  date: string; 
   tasks: Task[];
 }
 
@@ -104,7 +104,7 @@ export default function TimesheetPageClient({ week }: { week: string }) {
         if (!res.ok) {
           throw new Error("Failed to delete task");
         }
-        // Refresh data after deletion and sort by date
+        
         const updatedData = data
           .map((day) => ({
             ...day,

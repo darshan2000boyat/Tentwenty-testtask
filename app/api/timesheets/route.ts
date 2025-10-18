@@ -1,41 +1,41 @@
-// app/api/timesheets/route.js
-import { calculateStatus, readTimesheets, writeTimesheets } from '@/utils/timesheetHelper';
-import { NextRequest, NextResponse } from 'next/server';
+import {
+  calculateStatus,
+  readTimesheets,
+  writeTimesheets,
+} from "@/utils/timesheetHelper";
+import { NextRequest, NextResponse } from "next/server";
 import { format, startOfWeek, endOfWeek } from "date-fns";
 
 const timesheets = readTimesheets();
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const status = searchParams.get('status');
-  const dateRange = searchParams.get('dateRange');
-  
+  const status = searchParams.get("status");
+  const dateRange = searchParams.get("dateRange");
+
   let filteredTimesheets = [...timesheets];
-  
-  // Filter by status
-  if (status && status !== 'Status') {
-    filteredTimesheets = filteredTimesheets.filter(ts => ts.status === status.toUpperCase());
+
+  if (status && status !== "Status") {
+    filteredTimesheets = filteredTimesheets.filter(
+      (ts) => ts.status === status.toUpperCase()
+    );
   }
-  
-  // Filter by date range (simplified)
-  if (dateRange && dateRange !== 'Date Range') {
-    // In a real app, you'd implement date filtering logic here
-    filteredTimesheets = filteredTimesheets.filter(ts => {
-      if (dateRange === 'last7days') {
-        // Filter for last 7 days logic
+
+  if (dateRange && dateRange !== "Date Range") {
+    filteredTimesheets = filteredTimesheets.filter((ts) => {
+      if (dateRange === "last7days") {
         return true;
       }
-      if (dateRange === 'last30days') {
-        // Filter for last 30 days logic
+      if (dateRange === "last30days") {
         return true;
       }
       return true;
     });
   }
-  
+
   return NextResponse.json({
     timesheets: filteredTimesheets,
-    total: filteredTimesheets.length
+    total: filteredTimesheets.length,
   });
 }
 
@@ -53,13 +53,11 @@ export async function POST(request: NextRequest) {
 
     const timesheets = readTimesheets();
 
-    // Check if provided date belongs to an existing week
     let existingWeek = timesheets.find((sheet: any) =>
       sheet.tasks.some((task: any) => task.date === date)
     );
 
     if (existingWeek) {
-      // Add new task to existing week's tasks
       const newTask = {
         id: existingWeek.tasks.length + 1,
         title,
@@ -67,7 +65,7 @@ export async function POST(request: NextRequest) {
         hours,
         date,
         project,
-        typeOfWork
+        typeOfWork,
       };
 
       existingWeek.tasks.push(newTask);
@@ -81,17 +79,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(existingWeek, { status: 200 });
     }
 
-    // If week not found → create new week entry
     const today = new Date(date || new Date());
-    const start = startOfWeek(today, { weekStartsOn: 1 }); // Monday
-    const end = endOfWeek(today, { weekStartsOn: 1 }); // Sunday (but we'll show till Friday)
+    const start = startOfWeek(today, { weekStartsOn: 1 });
+    const end = endOfWeek(today, { weekStartsOn: 1 });
     const friday = new Date(start);
-    friday.setDate(start.getDate() + 4); // Friday
+    friday.setDate(start.getDate() + 4);
 
     const newWeek = {
       id: timesheets.length + 1,
       week: timesheets.length + 1,
-      dateRange: `${format(start, "d MMMM")} - ${format(friday, "d MMMM, yyyy")}`,
+      dateRange: `${format(start, "d MMMM")} - ${format(
+        friday,
+        "d MMMM, yyyy"
+      )}`,
       year: today.getFullYear(),
       month: today.getMonth(),
       startDate: format(start, "yyyy-MM-dd"),

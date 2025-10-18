@@ -6,7 +6,7 @@ import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
-  useReactTable
+  useReactTable,
 } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
@@ -31,7 +31,6 @@ interface Timesheet {
   status: "COMPLETED" | "INCOMPLETE" | "MISSING";
 }
 
-
 type TimesheetTableRow = {
   id: number;
   week: string;
@@ -41,7 +40,6 @@ type TimesheetTableRow = {
   totalHours: number;
 };
 
-
 export default function TimesheetsPage() {
   const [dateRangeFilter, setDateRangeFilter] = useState<string>("Date Range");
   const [statusFilter, setStatusFilter] = useState<string>("Status");
@@ -50,7 +48,6 @@ export default function TimesheetsPage() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  // Fetch timesheets from API
   const fetchTimesheets = async () => {
     try {
       setLoading(true);
@@ -75,7 +72,6 @@ export default function TimesheetsPage() {
     fetchTimesheets();
   }, [statusFilter, dateRangeFilter]);
 
-  // Transform timesheets for table display
   const tableData: TimesheetTableRow[] = useMemo(() => {
     return timesheets.map((timesheet) => ({
       id: timesheet.id,
@@ -92,7 +88,6 @@ export default function TimesheetsPage() {
     }));
   }, [timesheets]);
 
-  // Status badge colors
   const getStatusColor = (status: string): string => {
     switch (status) {
       case "COMPLETED":
@@ -106,20 +101,12 @@ export default function TimesheetsPage() {
     }
   };
 
-  // Handle action button click
   const handleActionClick = (timesheetId: number, action: string) => {
-    // Navigate to timesheet detail page or open modal
     console.log(`Action: ${action} for timesheet ${timesheetId}`);
-    // In a real app, you would:
-    // - Navigate to /timesheets/[id] for View
-    // - Open an edit modal for Update
-    // - Open a create form for Create
 
-    if(action === "View")
-      router.push(`/timesheets/${timesheetId}`);
+    if (action === "View") router.push(`/timesheets/${timesheetId}`);
   };
 
-  // Columns configuration
   const columns = useMemo(() => {
     const columnHelper = createColumnHelper<TimesheetTableRow>();
 
@@ -161,7 +148,6 @@ export default function TimesheetsPage() {
     ];
   }, []);
 
-  // React Table instance
   const table = useReactTable({
     data: tableData,
     columns,

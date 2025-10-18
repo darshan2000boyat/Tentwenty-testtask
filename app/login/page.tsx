@@ -37,8 +37,7 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-
-      // ✅ Always parse JSON, even on error
+      
       const data: LoginResponse = await res.json();
 
       if (res.ok) {
