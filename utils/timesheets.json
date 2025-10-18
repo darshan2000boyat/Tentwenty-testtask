@@ -246,8 +246,8 @@
       {
         "id": 1,
         "title": "API Development",
-        "description": "API Development",
-        "hours": 20,
+        "description": "API Development test",
+        "hours": 10,
         "date": "2024-02-05",
         "project": "Project A",
         "typeOfWork": "Feature Development"
@@ -260,10 +260,17 @@
         "date": "2024-02-07",
         "project": "Project A",
         "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 3,
+        "title": "rszesx ydrdrf",
+        "description": "Project A",
+        "hours": 3,
+        "date": "2024-02-05"
       }
     ],
-    "totalHours": 40,
-    "status": "COMPLETED"
+    "totalHours": 33,
+    "status": "INCOMPLETE"
   },
   {
     "id": 7,

@@ -1,8 +1,7 @@
-// src/app/api/logout/route.ts
 import { NextResponse } from "next/server";
 import { clearAuthCookie } from "@/utils/cookies";
 
 export async function POST() {
   await clearAuthCookie();
-  return NextResponse.json({ message: "Logged out" });
+  return NextResponse.json({ message: "Logged out successfully" });
 }
