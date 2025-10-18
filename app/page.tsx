@@ -3,6 +3,6 @@ import { isAuthenticated } from "@/lib/auth";
 
 export default async function Page() {
   const loggedIn = await isAuthenticated();
-  if (loggedIn) redirect("/home");
+  if (loggedIn) redirect("/timesheets");
   else redirect("/login");
 }

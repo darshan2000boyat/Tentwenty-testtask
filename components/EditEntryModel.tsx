@@ -23,7 +23,7 @@ const validationSchema = Yup.object({
   hours: Yup.number().required("Hours are required"),
 });
 
-export default function NewEntryModal({
+export default function EditEntryModal({
   isOpen,
   setIsOpen,
   date,

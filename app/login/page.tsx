@@ -43,7 +43,7 @@ export default function LoginPage() {
 
       if (res.ok) {
         toast.success("Login successful!");
-        router.push("/home");
+        router.push("/timesheets");
       } else {
         toast.error(data.message || "Login failed");
       }

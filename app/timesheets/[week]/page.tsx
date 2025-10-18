@@ -7,6 +7,7 @@ import Navigation from "@/components/Header";
 import { FaPlus } from "react-icons/fa6";
 import { FiMoreHorizontal } from "react-icons/fi";
 import NewEntryModal from "@/components/NewEntryModel";
+import TimesheetPageClient from "@/components/TimesheetPageClient";
 
 interface Task {
   id: number;
@@ -154,70 +155,71 @@ export default function TimesheetPage() {
     );
   };
 
+    // <div className="min-h-screen bg-gray-50">
+    //   <Navigation />
+
+    //   <main className="max-w-7xl mx-auto px-6 mt-6">
+    //     {errorMessage && (
+    //       <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+    //         {errorMessage}
+    //       </div>
+    //     )}
+    //     <div className="mt-10 border border-gray-200 rounded-lg shadow-sm p-6 bg-white">
+    //       <Header totalHours={totalHours} percentage={percentage} />
+
+    //       {/* Days */}
+    //       {data.map((day) => (
+    //         <div key={day.date} className="grid grid-cols-8 my-6">
+    //           <div className="font-semibold text-gray-800 mb-2 col-span-1">
+    //             {format(new Date(day.date), "MMM dd")}
+    //           </div>
+
+    //           <div className="space-y-2 col-span-7">
+    //             {day.tasks.map((task) => (
+    //               <div
+    //                 key={task.id}
+    //                 className="flex items-center justify-between border border-gray-200 rounded-md p-2"
+    //               >
+    //                 <span className="text-gray-900 font-semibold text-md">
+    //                   {task.title}
+    //                 </span>
+    //                 <span className="flex items-center gap-4">
+    //                   <span className="text-sm text-gray-400">
+    //                     {task.hours}
+    //                   </span>
+    //                   <span className="bg-primary-100 text-primary-800 text-xs p-2">
+    //                     {task.project}
+    //                   </span>
+    //                   <MoreOptions
+    //                     task={task}
+    //                     day={day}
+    //                     selectedTaskId={selectedTaskId}
+    //                     setSelectedTaskId={setSelectedTaskId}
+    //                     handleDeleteTask={handleDeleteTask}
+    //                   />
+    //                 </span>
+    //               </div>
+    //             ))}
+
+    //             <button
+    //               onClick={() => handleAddTask(day.date)}
+    //               className="w-full text-gray-500 hover:text-blue-600 text-sm hover:bg-primary-100 mt-2 py-2 border border-gray-300 hover:border-blue-600 border-dashed rounded-lg"
+    //             >
+    //               <span className="flex justify-center items-center gap-2">
+    //                 {" "}
+    //                 <FaPlus /> Add new task
+    //               </span>
+    //             </button>
+    //           </div>
+    //           <NewEntryModal isOpen={isOpen} setIsOpen={setIsOpen} date={day.date} />
+    //         </div>
+    //       ))}
+    //     </div>
+    //     <Footer />
+    //   </main>
+    // </div>
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
-
-      <main className="max-w-7xl mx-auto px-6 mt-6">
-        {errorMessage && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-            {errorMessage}
-          </div>
-        )}
-        <div className="mt-10 border border-gray-200 rounded-lg shadow-sm p-6 bg-white">
-          <Header totalHours={totalHours} percentage={percentage} />
-
-          {/* Days */}
-          {data.map((day) => (
-            <div key={day.date} className="grid grid-cols-8 my-6">
-              <div className="font-semibold text-gray-800 mb-2 col-span-1">
-                {format(new Date(day.date), "MMM dd")}
-              </div>
-
-              <div className="space-y-2 col-span-7">
-                {day.tasks.map((task) => (
-                  <div
-                    key={task.id}
-                    className="flex items-center justify-between border border-gray-200 rounded-md p-2"
-                  >
-                    <span className="text-gray-900 font-semibold text-md">
-                      {task.title}
-                    </span>
-                    <span className="flex items-center gap-4">
-                      <span className="text-sm text-gray-400">
-                        {task.hours}
-                      </span>
-                      <span className="bg-primary-100 text-primary-800 text-xs p-2">
-                        {task.project}
-                      </span>
-                      <MoreOptions
-                        task={task}
-                        day={day}
-                        selectedTaskId={selectedTaskId}
-                        setSelectedTaskId={setSelectedTaskId}
-                        handleDeleteTask={handleDeleteTask}
-                      />
-                    </span>
-                  </div>
-                ))}
-
-                <button
-                  onClick={() => handleAddTask(day.date)}
-                  className="w-full text-gray-500 hover:text-blue-600 text-sm hover:bg-primary-100 mt-2 py-2 border border-gray-300 hover:border-blue-600 border-dashed rounded-lg"
-                >
-                  <span className="flex justify-center items-center gap-2">
-                    {" "}
-                    <FaPlus /> Add new task
-                  </span>
-                </button>
-              </div>
-              <NewEntryModal isOpen={isOpen} setIsOpen={setIsOpen} date={day.date} />
-            </div>
-          ))}
-        </div>
-        <Footer />
-      </main>
-    </div>
+    <TimesheetPageClient week={"1"} />
   );
 }
 

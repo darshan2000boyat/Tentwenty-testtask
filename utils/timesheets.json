@@ -1,429 +1,908 @@
 [
-    {
-      "id": 1,
-      "week": 1,
-      "dateRange": "1 - 5 January, 2024",
-      "year": 2024,
-      "month": 0,
-      "startDate": "2024-01-01",
-      "endDate": "2024-01-05",
-      "tasks": [
-        { "id": 1, "description": "Project Development", "hours": 8, "date": "2024-01-01" },
-        { "id": 2, "description": "Client Meeting", "hours": 2, "date": "2024-01-02" },
-        { "id": 3, "description": "Client Meeting", "hours": 2, "date": "2024-01-03" },
-        { "id": 4, "description": "Client Meeting", "hours": 2, "date": "2024-01-04" },
-        { "id": 5, "description": "Code Review", "hours": 6, "date": "2024-01-05" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 2,
-      "week": 2,
-      "dateRange": "8 - 12 January, 2024",
-      "year": 2024,
-      "month": 0,
-      "startDate": "2024-01-08",
-      "endDate": "2024-01-12",
-      "tasks": [
-        { "id": 1, "description": "Project Development", "hours": 6, "date": "2024-01-08" },
-        { "id": 2, "description": "Team Training", "hours": 4, "date": "2024-01-09" },
-        { "id": 3, "description": "Team Training", "hours": 4, "date": "2024-01-10" },
-        { "id": 4, "description": "Team Training", "hours": 4, "date": "2024-01-11" },
-        { "id": 5, "description": "Team Training", "hours": 4, "date": "2024-01-12" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 3,
-      "week": 3,
-      "dateRange": "15 - 19 January, 2024",
-      "year": 2024,
-      "month": 0,
-      "startDate": "2024-01-15",
-      "endDate": "2024-01-19",
-      "tasks": [
-        { "id": 1, "description": "Sprint Planning", "hours": 4, "date": "2024-01-15" },
-        { "id": 2, "description": "Code Review", "hours": 6, "date": "2024-01-16" },
-        { "id": 2, "description": "Code Review", "hours": 6, "date": "2024-01-17" },
-        { "id": 2, "description": "Code Review", "hours": 6, "date": "2024-01-18" },
-        { "id": 3, "description": "System Testing", "hours": 12, "date": "2024-01-19" }
-      ],
-      "totalHours": 34,
-      "status": "INCOMPLETE"
-    },
-    {
-      "id": 4,
-      "week": 4,
-      "dateRange": "22 - 26 January, 2024",
-      "year": 2024,
-      "month": 0,
-      "startDate": "2024-01-22",
-      "endDate": "2024-01-26",
-      "tasks": [
-        { "id": 1, "description": "Feature Implementation", "hours": 15, "date": "2024-01-22" },
-        { "id": 2, "description": "Documentation", "hours": 10, "date": "2024-01-24" },
-        { "id": 3, "description": "Bug Fixes", "hours": 15, "date": "2024-01-26" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 5,
-      "week": 5,
-      "dateRange": "29 - 31 January, 2024",
-      "year": 2024,
-      "month": 0,
-      "startDate": "2024-01-29",
-      "endDate": "2024-01-31",
-      "tasks": [],
-      "totalHours": 0,
-      "status": "MISSING"
-    },
-    {
-      "id": 6,
-      "week": 6,
-      "dateRange": "5 - 9 February, 2024",
-      "year": 2024,
-      "month": 1,
-      "startDate": "2024-02-05",
-      "endDate": "2024-02-09",
-      "tasks": [
-        { "id": 1, "description": "API Development", "hours": 20, "date": "2024-02-05" },
-        { "id": 2, "description": "Unit Testing", "hours": 20, "date": "2024-02-07" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 7,
-      "week": 7,
-      "dateRange": "12 - 16 February, 2024",
-      "year": 2024,
-      "month": 1,
-      "startDate": "2024-02-12",
-      "endDate": "2024-02-16",
-      "tasks": [
-        { "id": 1, "description": "Database Optimization", "hours": 25, "date": "2024-02-12" },
-        { "id": 2, "description": "Performance Testing", "hours": 15, "date": "2024-02-14" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 8,
-      "week": 8,
-      "dateRange": "19 - 23 February, 2024",
-      "year": 2024,
-      "month": 1,
-      "startDate": "2024-02-19",
-      "endDate": "2024-02-23",
-      "tasks": [
-        { "id": 1, "description": "UI Implementation", "hours": 30, "date": "2024-02-19" },
-        { "id": 2, "description": "Code Review", "hours": 10, "date": "2024-02-21" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 9,
-      "week": 9,
-      "dateRange": "26 February - 1 March, 2024",
-      "year": 2024,
-      "month": 1,
-      "startDate": "2024-02-26",
-      "endDate": "2024-03-01",
-      "tasks": [
-        { "id": 1, "description": "Bug Fixing", "hours": 18, "date": "2024-02-26" },
-        { "id": 2, "description": "Documentation", "hours": 12, "date": "2024-02-28" }
-      ],
-      "totalHours": 30,
-      "status": "INCOMPLETE"
-    },
-    {
-      "id": 10,
-      "week": 10,
-      "dateRange": "4 - 8 March, 2024",
-      "year": 2024,
-      "month": 2,
-      "startDate": "2024-03-04",
-      "endDate": "2024-03-08",
-      "tasks": [
-        { "id": 1, "description": "Feature Development", "hours": 35, "date": "2024-03-04" },
-        { "id": 2, "description": "Team Meeting", "hours": 5, "date": "2024-03-06" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 11,
-      "week": 11,
-      "dateRange": "11 - 15 March, 2024",
-      "year": 2024,
-      "month": 2,
-      "startDate": "2024-03-11",
-      "endDate": "2024-03-15",
-      "tasks": [
-        { "id": 1, "description": "Security Implementation", "hours": 25, "date": "2024-03-11" },
-        { "id": 2, "description": "Code Review", "hours": 15, "date": "2024-03-13" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 12,
-      "week": 12,
-      "dateRange": "18 - 22 March, 2024",
-      "year": 2024,
-      "month": 2,
-      "startDate": "2024-03-18",
-      "endDate": "2024-03-22",
-      "tasks": [],
-      "totalHours": 0,
-      "status": "MISSING"
-    },
-    {
-      "id": 13,
-      "week": 13,
-      "dateRange": "25 - 29 March, 2024",
-      "year": 2024,
-      "month": 2,
-      "startDate": "2024-03-25",
-      "endDate": "2024-03-29",
-      "tasks": [
-        { "id": 1, "description": "Sprint Planning", "hours": 8, "date": "2024-03-25" },
-        { "id": 2, "description": "Development", "hours": 32, "date": "2024-03-27" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 14,
-      "week": 14,
-      "dateRange": "1 - 5 April, 2024",
-      "year": 2024,
-      "month": 3,
-      "startDate": "2024-04-01",
-      "endDate": "2024-04-05",
-      "tasks": [
-        { "id": 1, "description": "API Integration", "hours": 28, "date": "2024-04-01" },
-        { "id": 2, "description": "Testing", "hours": 12, "date": "2024-04-03" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 15,
-      "week": 15,
-      "dateRange": "8 - 12 April, 2024",
-      "year": 2024,
-      "month": 3,
-      "startDate": "2024-04-08",
-      "endDate": "2024-04-12",
-      "tasks": [
-        { "id": 1, "description": "Frontend Development", "hours": 20, "date": "2024-04-08" },
-        { "id": 2, "description": "Backend Development", "hours": 20, "date": "2024-04-10" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 16,
-      "week": 16,
-      "dateRange": "15 - 19 April, 2024",
-      "year": 2024,
-      "month": 3,
-      "startDate": "2024-04-15",
-      "endDate": "2024-04-19",
-      "tasks": [
-        { "id": 1, "description": "Code Refactoring", "hours": 16, "date": "2024-04-15" },
-        { "id": 2, "description": "Documentation", "hours": 8, "date": "2024-04-17" }
-      ],
-      "totalHours": 24,
-      "status": "INCOMPLETE"
-    },
-    {
-      "id": 17,
-      "week": 17,
-      "dateRange": "22 - 26 April, 2024",
-      "year": 2024,
-      "month": 3,
-      "startDate": "2024-04-22",
-      "endDate": "2024-04-26",
-      "tasks": [
-        { "id": 1, "description": "Testing", "hours": 30, "date": "2024-04-22" },
-        { "id": 2, "description": "Bug Fixes", "hours": 10, "date": "2024-04-24" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 18,
-      "week": 18,
-      "dateRange": "29 April - 3 May, 2024",
-      "year": 2024,
-      "month": 3,
-      "startDate": "2024-04-29",
-      "endDate": "2024-05-03",
-      "tasks": [],
-      "totalHours": 0,
-      "status": "MISSING"
-    },
-    {
-      "id": 19,
-      "week": 19,
-      "dateRange": "6 - 10 May, 2024",
-      "year": 2024,
-      "month": 4,
-      "startDate": "2024-05-06",
-      "endDate": "2024-05-10",
-      "tasks": [{ "id": 1, "description": "Feature Development", "hours": 40, "date": "2024-05-06" }],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 20,
-      "week": 20,
-      "dateRange": "13 - 17 May, 2024",
-      "year": 2024,
-      "month": 4,
-      "startDate": "2024-05-13",
-      "endDate": "2024-05-17",
-      "tasks": [
-        { "id": 1, "description": "Code Review", "hours": 15, "date": "2024-05-13" },
-        { "id": 2, "description": "Testing", "hours": 25, "date": "2024-05-15" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 21,
-      "week": 21,
-      "dateRange": "20 - 24 May, 2024",
-      "year": 2024,
-      "month": 4,
-      "startDate": "2024-05-20",
-      "endDate": "2024-05-24",
-      "tasks": [{ "id": 1, "description": "UI Enhancement", "hours": 32, "date": "2024-05-20" }],
-      "totalHours": 32,
-      "status": "INCOMPLETE"
-    },
-    {
-      "id": 22,
-      "week": 22,
-      "dateRange": "27 - 31 May, 2024",
-      "year": 2024,
-      "month": 4,
-      "startDate": "2024-05-27",
-      "endDate": "2024-05-31",
-      "tasks": [{ "id": 1, "description": "Performance Optimization", "hours": 40, "date": "2024-05-27" }],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 23,
-      "week": 23,
-      "dateRange": "3 - 7 June, 2024",
-      "year": 2024,
-      "month": 5,
-      "startDate": "2024-06-03",
-      "endDate": "2024-06-07",
-      "tasks": [
-        { "id": 1, "description": "Security Audit", "hours": 20, "date": "2024-06-03" },
-        { "id": 2, "description": "Bug Fixes", "hours": 20, "date": "2024-06-05" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 24,
-      "week": 24,
-      "dateRange": "10 - 14 June, 2024",
-      "year": 2024,
-      "month": 5,
-      "startDate": "2024-06-10",
-      "endDate": "2024-06-14",
-      "tasks": [{ "id": 1, "description": "Documentation", "hours": 28, "date": "2024-06-10" }],
-      "totalHours": 28,
-      "status": "INCOMPLETE"
-    },
-    {
-      "id": 25,
-      "week": 25,
-      "dateRange": "17 - 21 June, 2024",
-      "year": 2024,
-      "month": 5,
-      "startDate": "2024-06-17",
-      "endDate": "2024-06-21",
-      "tasks": [{ "id": 1, "description": "Feature Implementation", "hours": 40, "date": "2024-06-17" }],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 26,
-      "week": 26,
-      "dateRange": "24 - 28 June, 2024",
-      "year": 2024,
-      "month": 5,
-      "startDate": "2024-06-24",
-      "endDate": "2024-06-28",
-      "tasks": [],
-      "totalHours": 0,
-      "status": "MISSING"
-    },
-    {
-      "id": 27,
-      "week": 27,
-      "dateRange": "1 - 5 July, 2024",
-      "year": 2024,
-      "month": 6,
-      "startDate": "2024-07-01",
-      "endDate": "2024-07-05",
-      "tasks": [
-        { "id": 1, "description": "Code Review", "hours": 20, "date": "2024-07-01" },
-        { "id": 2, "description": "Testing", "hours": 20, "date": "2024-07-03" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 28,
-      "week": 28,
-      "dateRange": "8 - 12 July, 2024",
-      "year": 2024,
-      "month": 6,
-      "startDate": "2024-07-08",
-      "endDate": "2024-07-12",
-      "tasks": [{ "id": 1, "description": "Bug Fixes", "hours": 35, "date": "2024-07-08" }],
-      "totalHours": 35,
-      "status": "INCOMPLETE"
-    },
-    {
-      "id": 29,
-      "week": 29,
-      "dateRange": "15 - 19 July, 2024",
-      "year": 2024,
-      "month": 6,
-      "startDate": "2024-07-15",
-      "endDate": "2024-07-19",
-      "tasks": [{ "id": 1, "description": "Feature Development", "hours": 40, "date": "2024-07-15" }],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    },
-    {
-      "id": 30,
-      "week": 30,
-      "dateRange": "22 - 26 July, 2024",
-      "year": 2024,
-      "month": 6,
-      "startDate": "2024-07-22",
-      "endDate": "2024-07-26",
-      "tasks": [
-        { "id": 1, "description": "Project Planning", "hours": 16, "date": "2024-07-22" },
-        { "id": 2, "description": "Development", "hours": 24, "date": "2024-07-24" }
-      ],
-      "totalHours": 40,
-      "status": "COMPLETED"
-    }
-  ]
+  {
+    "id": 1,
+    "week": 1,
+    "dateRange": "1 - 5 January, 2024",
+    "year": 2024,
+    "month": 0,
+    "startDate": "2024-01-01",
+    "endDate": "2024-01-05",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Project Development",
+        "hours": 8,
+        "date": "2024-01-01",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 5,
+        "title": "API Development",
+        "description": "Project Development",
+        "hours": 8,
+        "date": "2024-01-01",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Client Meeting",
+        "hours": 2,
+        "date": "2024-01-02",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 3,
+        "title": "API Development",
+        "description": "Client Meeting",
+        "hours": 2,
+        "date": "2024-01-03",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 4,
+        "title": "API Development",
+        "description": "Client Meeting",
+        "hours": 2,
+        "date": "2024-01-04",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 7,
+        "title": "Fixed new bug",
+        "description": "Project A",
+        "hours": 3,
+        "date": "2024-01-03"
+      }
+    ],
+    "totalHours": 25,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 2,
+    "week": 2,
+    "dateRange": "8 - 12 January, 2024",
+    "year": 2024,
+    "month": 0,
+    "startDate": "2024-01-08",
+    "endDate": "2024-01-12",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Project Development",
+        "hours": 6,
+        "date": "2024-01-08",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Team Training",
+        "hours": 4,
+        "date": "2024-01-09",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 3,
+        "title": "API Development",
+        "description": "Team Training",
+        "hours": 4,
+        "date": "2024-01-10",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 4,
+        "title": "API Development",
+        "description": "Team Training",
+        "hours": 4,
+        "date": "2024-01-11",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 5,
+        "title": "API Development",
+        "description": "Team Training",
+        "hours": 4,
+        "date": "2024-01-12",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 6,
+        "title": "API Development",
+        "description": "Worked on backend endpoints",
+        "hours": 5,
+        "date": "2024-01-09",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 7,
+        "title": "API Development",
+        "description": "Worked on API testing",
+        "hours": 5,
+        "date": "2024-01-09",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 32,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 3,
+    "week": 3,
+    "dateRange": "15 - 19 January, 2024",
+    "year": 2024,
+    "month": 0,
+    "startDate": "2024-01-15",
+    "endDate": "2024-01-19",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Sprint Planning",
+        "hours": 4,
+        "date": "2024-01-15",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Code Review",
+        "hours": 6,
+        "date": "2024-01-16",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Code Review",
+        "hours": 6,
+        "date": "2024-01-17",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Code Review",
+        "hours": 6,
+        "date": "2024-01-18",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 3,
+        "title": "API Development",
+        "description": "System Testing",
+        "hours": 12,
+        "date": "2024-01-19",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 34,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 4,
+    "week": 4,
+    "dateRange": "22 - 26 January, 2024",
+    "year": 2024,
+    "month": 0,
+    "startDate": "2024-01-22",
+    "endDate": "2024-01-26",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Feature Implementation",
+        "hours": 15,
+        "date": "2024-01-22",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Documentation",
+        "hours": 10,
+        "date": "2024-01-24",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 3,
+        "title": "API Development",
+        "description": "Bug Fixes",
+        "hours": 15,
+        "date": "2024-01-26",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 5,
+    "week": 5,
+    "dateRange": "29 - 31 January, 2024",
+    "year": 2024,
+    "month": 0,
+    "startDate": "2024-01-29",
+    "endDate": "2024-01-31",
+    "tasks": [],
+    "totalHours": 0,
+    "status": "MISSING"
+  },
+  {
+    "id": 6,
+    "week": 6,
+    "dateRange": "5 - 9 February, 2024",
+    "year": 2024,
+    "month": 1,
+    "startDate": "2024-02-05",
+    "endDate": "2024-02-09",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "API Development",
+        "hours": 20,
+        "date": "2024-02-05",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Unit Testing",
+        "hours": 20,
+        "date": "2024-02-07",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 7,
+    "week": 7,
+    "dateRange": "12 - 16 February, 2024",
+    "year": 2024,
+    "month": 1,
+    "startDate": "2024-02-12",
+    "endDate": "2024-02-16",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Database Optimization",
+        "hours": 25,
+        "date": "2024-02-12",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Performance Testing",
+        "hours": 15,
+        "date": "2024-02-14",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 8,
+    "week": 8,
+    "dateRange": "19 - 23 February, 2024",
+    "year": 2024,
+    "month": 1,
+    "startDate": "2024-02-19",
+    "endDate": "2024-02-23",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "UI Implementation",
+        "hours": 30,
+        "date": "2024-02-19",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Code Review",
+        "hours": 10,
+        "date": "2024-02-21",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 9,
+    "week": 9,
+    "dateRange": "26 February - 1 March, 2024",
+    "year": 2024,
+    "month": 1,
+    "startDate": "2024-02-26",
+    "endDate": "2024-03-01",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Bug Fixing",
+        "hours": 18,
+        "date": "2024-02-26",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Documentation",
+        "hours": 12,
+        "date": "2024-02-28",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 30,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 10,
+    "week": 10,
+    "dateRange": "4 - 8 March, 2024",
+    "year": 2024,
+    "month": 2,
+    "startDate": "2024-03-04",
+    "endDate": "2024-03-08",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Feature Development",
+        "hours": 35,
+        "date": "2024-03-04",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Team Meeting",
+        "hours": 5,
+        "date": "2024-03-06",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 11,
+    "week": 11,
+    "dateRange": "11 - 15 March, 2024",
+    "year": 2024,
+    "month": 2,
+    "startDate": "2024-03-11",
+    "endDate": "2024-03-15",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Security Implementation",
+        "hours": 25,
+        "date": "2024-03-11",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Code Review",
+        "hours": 15,
+        "date": "2024-03-13",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 12,
+    "week": 12,
+    "dateRange": "18 - 22 March, 2024",
+    "year": 2024,
+    "month": 2,
+    "startDate": "2024-03-18",
+    "endDate": "2024-03-22",
+    "tasks": [],
+    "totalHours": 0,
+    "status": "MISSING"
+  },
+  {
+    "id": 13,
+    "week": 13,
+    "dateRange": "25 - 29 March, 2024",
+    "year": 2024,
+    "month": 2,
+    "startDate": "2024-03-25",
+    "endDate": "2024-03-29",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Sprint Planning",
+        "hours": 8,
+        "date": "2024-03-25",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Development",
+        "hours": 32,
+        "date": "2024-03-27",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 14,
+    "week": 14,
+    "dateRange": "1 - 5 April, 2024",
+    "year": 2024,
+    "month": 3,
+    "startDate": "2024-04-01",
+    "endDate": "2024-04-05",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "API Integration",
+        "hours": 28,
+        "date": "2024-04-01",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Testing",
+        "hours": 12,
+        "date": "2024-04-03",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 15,
+    "week": 15,
+    "dateRange": "8 - 12 April, 2024",
+    "year": 2024,
+    "month": 3,
+    "startDate": "2024-04-08",
+    "endDate": "2024-04-12",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Frontend Development",
+        "hours": 20,
+        "date": "2024-04-08",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Backend Development",
+        "hours": 20,
+        "date": "2024-04-10",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 16,
+    "week": 16,
+    "dateRange": "15 - 19 April, 2024",
+    "year": 2024,
+    "month": 3,
+    "startDate": "2024-04-15",
+    "endDate": "2024-04-19",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Code Refactoring",
+        "hours": 16,
+        "date": "2024-04-15",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Documentation",
+        "hours": 8,
+        "date": "2024-04-17",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 24,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 17,
+    "week": 17,
+    "dateRange": "22 - 26 April, 2024",
+    "year": 2024,
+    "month": 3,
+    "startDate": "2024-04-22",
+    "endDate": "2024-04-26",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Testing",
+        "hours": 30,
+        "date": "2024-04-22",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Bug Fixes",
+        "hours": 10,
+        "date": "2024-04-24",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 18,
+    "week": 18,
+    "dateRange": "29 April - 3 May, 2024",
+    "year": 2024,
+    "month": 3,
+    "startDate": "2024-04-29",
+    "endDate": "2024-05-03",
+    "tasks": [],
+    "totalHours": 0,
+    "status": "MISSING"
+  },
+  {
+    "id": 19,
+    "week": 19,
+    "dateRange": "6 - 10 May, 2024",
+    "year": 2024,
+    "month": 4,
+    "startDate": "2024-05-06",
+    "endDate": "2024-05-10",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Feature Development",
+        "hours": 40,
+        "date": "2024-05-06",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 20,
+    "week": 20,
+    "dateRange": "13 - 17 May, 2024",
+    "year": 2024,
+    "month": 4,
+    "startDate": "2024-05-13",
+    "endDate": "2024-05-17",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Code Review",
+        "hours": 15,
+        "date": "2024-05-13",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Testing",
+        "hours": 25,
+        "date": "2024-05-15",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 21,
+    "week": 21,
+    "dateRange": "20 - 24 May, 2024",
+    "year": 2024,
+    "month": 4,
+    "startDate": "2024-05-20",
+    "endDate": "2024-05-24",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "UI Enhancement",
+        "hours": 32,
+        "date": "2024-05-20",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 32,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 22,
+    "week": 22,
+    "dateRange": "27 - 31 May, 2024",
+    "year": 2024,
+    "month": 4,
+    "startDate": "2024-05-27",
+    "endDate": "2024-05-31",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Performance Optimization",
+        "hours": 40,
+        "date": "2024-05-27",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 23,
+    "week": 23,
+    "dateRange": "3 - 7 June, 2024",
+    "year": 2024,
+    "month": 5,
+    "startDate": "2024-06-03",
+    "endDate": "2024-06-07",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Security Audit",
+        "hours": 20,
+        "date": "2024-06-03",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Bug Fixes",
+        "hours": 20,
+        "date": "2024-06-05",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 24,
+    "week": 24,
+    "dateRange": "10 - 14 June, 2024",
+    "year": 2024,
+    "month": 5,
+    "startDate": "2024-06-10",
+    "endDate": "2024-06-14",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Documentation",
+        "hours": 28,
+        "date": "2024-06-10",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 28,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 25,
+    "week": 25,
+    "dateRange": "17 - 21 June, 2024",
+    "year": 2024,
+    "month": 5,
+    "startDate": "2024-06-17",
+    "endDate": "2024-06-21",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Feature Implementation",
+        "hours": 40,
+        "date": "2024-06-17",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 26,
+    "week": 26,
+    "dateRange": "24 - 28 June, 2024",
+    "year": 2024,
+    "month": 5,
+    "startDate": "2024-06-24",
+    "endDate": "2024-06-28",
+    "tasks": [],
+    "totalHours": 0,
+    "status": "MISSING"
+  },
+  {
+    "id": 27,
+    "week": 27,
+    "dateRange": "1 - 5 July, 2024",
+    "year": 2024,
+    "month": 6,
+    "startDate": "2024-07-01",
+    "endDate": "2024-07-05",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Code Review",
+        "hours": 20,
+        "date": "2024-07-01",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Testing",
+        "hours": 20,
+        "date": "2024-07-03",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 28,
+    "week": 28,
+    "dateRange": "8 - 12 July, 2024",
+    "year": 2024,
+    "month": 6,
+    "startDate": "2024-07-08",
+    "endDate": "2024-07-12",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Bug Fixes",
+        "hours": 35,
+        "date": "2024-07-08",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 35,
+    "status": "INCOMPLETE"
+  },
+  {
+    "id": 29,
+    "week": 29,
+    "dateRange": "15 - 19 July, 2024",
+    "year": 2024,
+    "month": 6,
+    "startDate": "2024-07-15",
+    "endDate": "2024-07-19",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Feature Development",
+        "hours": 40,
+        "date": "2024-07-15",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  },
+  {
+    "id": 30,
+    "week": 30,
+    "dateRange": "22 - 26 July, 2024",
+    "year": 2024,
+    "month": 6,
+    "startDate": "2024-07-22",
+    "endDate": "2024-07-26",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "API Development",
+        "description": "Project Planning",
+        "hours": 16,
+        "date": "2024-07-22",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      },
+      {
+        "id": 2,
+        "title": "API Development",
+        "description": "Development",
+        "hours": 24,
+        "date": "2024-07-24",
+        "project": "Project A",
+        "typeOfWork": "Feature Development"
+      }
+    ],
+    "totalHours": 40,
+    "status": "COMPLETED"
+  }
+]

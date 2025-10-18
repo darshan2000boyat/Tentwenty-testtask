@@ -6,19 +6,19 @@ export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   const isAuthPage = path.startsWith("/login");
-  const isProtectedRoute = path === "/home" || path.startsWith("/home/");
+  const isProtectedRoute = path === "/timesheets" || path.startsWith("/timesheets/");
 
   if (!token && isProtectedRoute) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
   if (token && isAuthPage) {
-    return NextResponse.redirect(new URL("/home", request.url));
+    return NextResponse.redirect(new URL("/timesheets", request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/login", "/home/:path*"],
+  matcher: ["/login", "/timesheets/:path*"],
 };

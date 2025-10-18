@@ -1,10 +1,11 @@
+import fs from "fs";
+import path from "path";
+
 export function calculateStatus(totalHours: number) {
   if (totalHours === 0) return "MISSING";
   if (totalHours < 40) return "INCOMPLETE";
   return "COMPLETED";
 }
-import fs from "fs";
-import path from "path";
 
 const filePath = path.join(process.cwd(), "utils/timesheets.json");
 
