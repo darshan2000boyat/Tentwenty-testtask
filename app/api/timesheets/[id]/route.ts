@@ -5,58 +5,58 @@ import {
 } from "@/utils/timesheetHelper";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function PUT(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id");
-    const body = await request.json();
+// export async function PUT(request: NextRequest) {
+//   try {
+//     const { searchParams } = new URL(request.url);
+//     const id = searchParams.get("id");
+//     const body = await request.json();
 
-    if (!id) {
-      return NextResponse.json(
-        { error: "Timesheet ID required" },
-        { status: 400 }
-      );
-    }
+//     if (!id) {
+//       return NextResponse.json(
+//         { error: "Timesheet ID required" },
+//         { status: 400 }
+//       );
+//     }
 
-    const timesheets = readTimesheets();
-    const timesheetIndex = timesheets.findIndex(
-      (ts: any) => ts.id === parseInt(id)
-    );
+//     const timesheets = readTimesheets();
+//     const timesheetIndex = timesheets.findIndex(
+//       (ts: any) => ts.id === parseInt(id)
+//     );
 
-    if (timesheetIndex === -1) {
-      return NextResponse.json(
-        { error: "Timesheet not found" },
-        { status: 404 }
-      );
-    }
+//     if (timesheetIndex === -1) {
+//       return NextResponse.json(
+//         { error: "Timesheet not found" },
+//         { status: 404 }
+//       );
+//     }
 
-    const totalHours = Array.isArray(body.tasks)
-      ? body.tasks.reduce(
-          (sum: number, task: { hours: number }) => sum + (task.hours || 0),
-          0
-        )
-      : 0;
+//     const totalHours = Array.isArray(body.tasks)
+//       ? body.tasks.reduce(
+//           (sum: number, task: { hours: number }) => sum + (task.hours || 0),
+//           0
+//         )
+//       : 0;
 
-    const status = calculateStatus(totalHours);
+//     const status = calculateStatus(totalHours);
 
-    timesheets[timesheetIndex] = {
-      ...timesheets[timesheetIndex],
-      ...body,
-      totalHours,
-      status,
-    };
+//     timesheets[timesheetIndex] = {
+//       ...timesheets[timesheetIndex],
+//       ...body,
+//       totalHours,
+//       status,
+//     };
 
-    writeTimesheets(timesheets);
+//     writeTimesheets(timesheets);
 
-    return NextResponse.json(timesheets[timesheetIndex]);
-  } catch (error) {
-    console.error("❌ Failed to update timesheet:", error);
-    return NextResponse.json(
-      { error: "Failed to update timesheet" },
-      { status: 500 }
-    );
-  }
-}
+//     return NextResponse.json(timesheets[timesheetIndex]);
+//   } catch (error) {
+//     console.error("❌ Failed to update timesheet:", error);
+//     return NextResponse.json(
+//       { error: "Failed to update timesheet" },
+//       { status: 500 }
+//     );
+//   }
+// }
 
 export async function GET(
   request: Request,

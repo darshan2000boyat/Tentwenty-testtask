@@ -1,5 +1,6 @@
+"use client";
 import { Dialog, DialogTitle, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FaPlus } from "react-icons/fa6";
@@ -23,45 +24,55 @@ const validationSchema = Yup.object({
   hours: Yup.number().required("Hours are required"),
 });
 
-export default function EditEntryModal({
+export default function NewEntryModal({
   isOpen,
   setIsOpen,
   date,
-  setDate
+  setDate,
+  taskId,
+  weekId
 }: {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   date: string | null;
   setDate: (date: string | null) => void;
+  taskId: string | number;
+  weekId: string | number;
 }) {
-  const handleSubmit = (values: FormValues) => {
-    console.log("✅ Submitted:", values);
 
-    const newEntry = {
-      "title": values.description,
-      "description": values.project,
+  const isEditing = !!taskId
+
+  const handleSubmit = (values: FormValues) => {
+    const entry = {
+      "project": values.project,
+      "typeOfWork": values.typeOfWork,
+      "description": values.description,
       "hours": values.hours,
       "date": date
     }
 
-    const response = fetch('/api/timesheets', {
-      method: 'POST',
+    const url = isEditing 
+      ? `/api/timesheets/${weekId}/${taskId}`
+      : '/api/timesheets';
+
+    fetch(url, {
+      method: isEditing ? 'PUT' : 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newEntry),
+      body: JSON.stringify(entry),
     })
     .then(res => res.json())
     .then(data => {
-      toast.success('Entry added successfully!');
-      setIsOpen(false)
+      toast.success(isEditing ? 'Entry updated successfully!' : 'Entry added successfully!');
+      setIsOpen(false);
+      formik.resetForm();
+      setDate(null);
     })
     .catch((error) => {
       console.error('Error:', error);
+      toast.error('Failed to save entry');
     });
-    
-    setIsOpen(false);
-    formik.resetForm();
   };
 
   const formik = useFormik<FormValues>({
@@ -81,6 +92,23 @@ export default function EditEntryModal({
       : null;
   const decrement = () =>
     formik.setFieldValue("hours", Math.max(1, formik.values.hours - 1));
+
+  useEffect(() => {
+    if (isEditing && isOpen) {
+      fetch(`/api/timesheets/${weekId}/${taskId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data, "alsijkdvlrd")
+          formik.setValues({
+            project: data.task.project || "",
+            typeOfWork: data.task.typeOfWork || "",
+            description: data.task.description || "",
+            hours: data.task.hours || 1,
+          });
+        })
+        .catch((err) => console.error("Failed to fetch task", err));
+    }
+  }, [isEditing, isOpen, weekId, taskId]);
 
   return (
     <>
@@ -118,7 +146,7 @@ export default function EditEntryModal({
               <Dialog.Panel className="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl">
                 <div className="flex justify-between items-center mb-4">
                   <DialogTitle className="text-lg font-semibold text-gray-800 mb-4">
-                    Add New Entry
+                    Edit Existing Entry
                   </DialogTitle>
                   <IoCloseSharp
                     onClick={() => {
@@ -241,7 +269,7 @@ export default function EditEntryModal({
                       type="submit"
                       className="text-sm w-full px-3 py-2 bg-primary-600 text-white rounded-lg hover:bg-blue-700"
                     >
-                      Add Entry
+                      Update Entry
                     </button>
                     <button
                       type="button"

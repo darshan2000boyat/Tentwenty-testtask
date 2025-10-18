@@ -7,7 +7,8 @@ import Navigation from "@/components/Header";
 import { FaPlus } from "react-icons/fa6";
 import { FiMoreHorizontal } from "react-icons/fi";
 import NewEntryModal from "@/components/NewEntryModel";
-import { readTimesheets } from "@/utils/timesheetHelper";
+import { toast } from "react-toastify";
+import EditEntryModal from "./EditEntryModel";
 
 interface Task {
   id: number;
@@ -34,6 +35,8 @@ export default function TimesheetPageClient({ week }: { week: string }) {
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -43,7 +46,7 @@ export default function TimesheetPageClient({ week }: { week: string }) {
       setInitialData(timesheets ? [timesheets] : []);
     }
     fetchData();
-  }, [week, isOpen]);
+  }, [week, isOpen, isEditModalOpen]);
 
   useEffect(() => {
     if (!initialData.length) return;
@@ -57,13 +60,17 @@ export default function TimesheetPageClient({ week }: { week: string }) {
           title: task.title,
           hours: task.hours,
           project: task.description || "",
-          typeOfWork: task.typeOfWork
+          typeOfWork: task.typeOfWork,
         });
       });
-      return Object.entries(groupedByDate).map(([date, tasks]) => ({
-        date,
-        tasks,
-      }));
+      return Object.entries(groupedByDate)
+        .map(([date, tasks]) => ({
+          date,
+          tasks,
+        }))
+        .sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        );
     });
 
     setData(flattenedData);
@@ -81,15 +88,40 @@ export default function TimesheetPageClient({ week }: { week: string }) {
     setIsOpen(true);
     setDate(date);
   };
+  
+  const handleEditTask = (taskId: string, date: string) => {
+    setEditingTaskId(taskId);
+    setIsEditModalOpen(true);
+    setSelectedTaskId(null);
+    setDate(date);
+  };
 
-  const handleDeleteTask = (date: string, taskId: number) => {
-    setData((prev) =>
-      prev.map((d) =>
-        d.date === date
-          ? { ...d, tasks: d.tasks.filter((t) => t.id !== taskId) }
-          : d
-      )
-    );
+  const handleDeleteTask = (week: string, taskId: number) => {
+    fetch(`/api/timesheets/${week}/${taskId}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to delete task");
+        }
+        // Refresh data after deletion and sort by date
+        const updatedData = data
+          .map((day) => ({
+            ...day,
+            tasks: day.tasks.filter((task) => task.id !== taskId),
+          }))
+          .sort(
+            (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+          );
+        setData(updatedData);
+        setErrorMessage("");
+        toast.success("Task deleted successfully!");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setErrorMessage("Failed to delete task. Please try again.");
+        toast.error("Failed to delete task. Please try again.");
+      });
   };
 
   return (
@@ -134,10 +166,12 @@ export default function TimesheetPageClient({ week }: { week: string }) {
                       </span>
                       <MoreOptions
                         task={task}
-                        day={day}
+                        week={week}
                         selectedTaskId={selectedTaskId}
                         setSelectedTaskId={setSelectedTaskId}
                         handleDeleteTask={handleDeleteTask}
+                        handleEditTask={handleEditTask}
+                        date={day.date}
                       />
                     </span>
                   </div>
@@ -164,6 +198,15 @@ export default function TimesheetPageClient({ week }: { week: string }) {
             </div>
           ))}
         </div>
+
+        <EditEntryModal
+          isOpen={isEditModalOpen}
+          setIsOpen={setIsEditModalOpen}
+          date={date}
+          setDate={setDate}
+          weekId={week}
+          taskId={editingTaskId || ""}
+        />
         <Footer />
       </main>
     </div>
@@ -212,17 +255,19 @@ type MoreOptionsProps = {
   setSelectedTaskId: React.Dispatch<React.SetStateAction<number | null>>;
   selectedTaskId: number | null;
   task: Task;
-  day: DayEntry;
-  handleDeleteTask: (date: string, taskId: number) => void;
+  week: string;
+  handleDeleteTask: (week: string, taskId: number) => void;
 };
 
 const MoreOptions = ({
   setSelectedTaskId,
   selectedTaskId,
   task,
-  day,
+  week,
   handleDeleteTask,
-}: MoreOptionsProps) => {
+  handleEditTask,
+  date
+}: MoreOptionsProps & { handleEditTask: (taskId: string, date: string) => void; date: string }) => {
   return (
     <div className="relative">
       <FiMoreHorizontal
@@ -234,11 +279,14 @@ const MoreOptions = ({
       {selectedTaskId === task.id && (
         <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-md z-10">
           <div className="py-1">
-            <button className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left cursor-pointer">
+            <button 
+              onClick={() => handleEditTask(task.id.toString(), date)}
+              className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left cursor-pointer"
+            >
               Edit
             </button>
             <button
-              onClick={() => handleDeleteTask(day.date, task.id)}
+              onClick={() => handleDeleteTask(week, task.id)}
               className="w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 text-left cursor-pointer"
             >
               Delete
