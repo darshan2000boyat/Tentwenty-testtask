@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Header";
@@ -25,10 +25,34 @@ interface DayEntry {
   tasks: Task[];
 }
 
-interface Timesheet extends Task, DayEntry {}
+interface TaskData {
+  id: number;
+  title: string;
+  description: string;
+  hours: number;
+  date: string; 
+  project: string;
+  typeOfWork: string;
+}
+
+type TimesheetStatus = "COMPLETED" | "INCOMPLETE" | "MISSING";
+
+interface TimesheetResData {
+  id: number;
+  week: number;
+  dateRange: string;
+  year: number;
+  month: number; 
+  startDate: string; 
+  endDate: string;   
+  tasks: TaskData[];
+  totalHours: number;
+  status: TimesheetStatus;
+}
+
 
 export default function TimesheetPageClient({ week }: { week: string }) {
-  const [initialData, setInitialData] = useState<any[]>([]);
+  const [initialData, setInitialData] = useState<TimesheetResData[]>([]);
   const [data, setData] = useState<DayEntry[]>([]);
   const [date, setDate] = useState<string | null>(null);
 
@@ -53,7 +77,7 @@ export default function TimesheetPageClient({ week }: { week: string }) {
 
     const flattenedData: DayEntry[] = initialData.flatMap((week) => {
       const groupedByDate: Record<string, Task[]> = {};
-      week.tasks.forEach((task: Timesheet) => {
+      week.tasks.forEach((task: TaskData) => {
         if (!groupedByDate[task.date]) groupedByDate[task.date] = [];
         groupedByDate[task.date].push({
           id: task.id,
@@ -218,14 +242,14 @@ const Header = ({
   totalHours,
   percentage,
 }: {
-  initialData: Task[];
+  initialData: Task[] | TimesheetResData[];
   totalHours: number;
   percentage: number;
 }) => {
   return (
     <div className="grid grid-cols-4 mb-4">
       <h2 className="col-span-3 lg:text-2xl leading-4.5 font-semibold text-gray-800">
-        This week's timesheet
+        This week&apos;s timesheet
       </h2>
 
       <div className="text-black flex flex-col items-end max-h-fit">

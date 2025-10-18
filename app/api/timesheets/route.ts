@@ -6,30 +6,61 @@ import {
 import { NextRequest, NextResponse } from "next/server";
 import { format, startOfWeek, endOfWeek } from "date-fns";
 
-const timesheets = readTimesheets();
+interface Task {
+  id: number;
+  title: string;
+  description: string;
+  hours: number;
+  date: string;
+  project?: string;
+  typeOfWork?: string;
+}
+
+type TimesheetStatus = "COMPLETED" | "INCOMPLETE" | "MISSING";
+
+interface Timesheet {
+  id: number;
+  week: number;
+  dateRange: string;
+  year: number;
+  month: number;
+  startDate: string;
+  endDate: string;
+  tasks: Task[];
+  totalHours: number;
+  status: TimesheetStatus;
+}
+
+// Type read/write helpers
+const timesheets: Timesheet[] = readTimesheets() as Timesheet[];
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const status = searchParams.get("status");
   const dateRange = searchParams.get("dateRange");
 
-  let filteredTimesheets = [...timesheets];
+  let filteredTimesheets: Timesheet[] = [...timesheets];
 
   if (status && status !== "Status") {
     filteredTimesheets = filteredTimesheets.filter(
-      (ts) => ts.status === status.toUpperCase()
+      (ts) => ts.status === (status.toUpperCase() as TimesheetStatus)
     );
   }
 
   if (dateRange && dateRange !== "Date Range") {
+    const today = new Date();
     filteredTimesheets = filteredTimesheets.filter((ts) => {
-      if (dateRange === "last7days") {
-        return true;
+      const startDate = new Date(ts.startDate);
+      switch (dateRange) {
+        case "last7days":
+          return startDate >= new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+        case "last30days":
+          return startDate >= new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+        case "last90days":
+          return startDate >= new Date(today.getTime() - 90 * 24 * 60 * 60 * 1000);
+        default:
+          return true;
       }
-      if (dateRange === "last30days") {
-        return true;
-      }
-      return true;
     });
   }
 
@@ -41,7 +72,15 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body: {
+      title: string;
+      description: string;
+      hours: number;
+      date: string;
+      project?: string;
+      typeOfWork?: string;
+    } = await request.json();
+
     const { title, description, hours, date, project, typeOfWork } = body;
 
     if (!title || !description || !hours) {
@@ -51,14 +90,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const timesheets = readTimesheets();
+    const timesheets: Timesheet[] = readTimesheets() as Timesheet[];
 
-    let existingWeek = timesheets.find((sheet: any) =>
-      sheet.tasks.some((task: any) => task.date === date)
+    const existingWeek = timesheets.find((sheet) =>
+      sheet.tasks.some((task) => task.date === date)
     );
 
     if (existingWeek) {
-      const newTask = {
+      const newTask: Task = {
         id: existingWeek.tasks.length + 1,
         title,
         description,
@@ -70,22 +109,21 @@ export async function POST(request: NextRequest) {
 
       existingWeek.tasks.push(newTask);
       existingWeek.totalHours = existingWeek.tasks.reduce(
-        (sum: number, t: any) => sum + t.hours,
+        (sum, t) => sum + t.hours,
         0
       );
       existingWeek.status = calculateStatus(existingWeek.totalHours);
 
-      writeTimesheets(timesheets);
+      writeTimesheets(timesheets as Timesheet[]);
       return NextResponse.json(existingWeek, { status: 200 });
     }
 
     const today = new Date(date || new Date());
     const start = startOfWeek(today, { weekStartsOn: 1 });
-    const end = endOfWeek(today, { weekStartsOn: 1 });
     const friday = new Date(start);
     friday.setDate(start.getDate() + 4);
 
-    const newWeek = {
+    const newWeek: Timesheet = {
       id: timesheets.length + 1,
       week: timesheets.length + 1,
       dateRange: `${format(start, "d MMMM")} - ${format(
@@ -103,6 +141,8 @@ export async function POST(request: NextRequest) {
           description,
           hours,
           date: format(today, "yyyy-MM-dd"),
+          project,
+          typeOfWork,
         },
       ],
       totalHours: hours,
@@ -110,7 +150,7 @@ export async function POST(request: NextRequest) {
     };
 
     timesheets.push(newWeek);
-    writeTimesheets(timesheets);
+    writeTimesheets(timesheets as Timesheet[]);
 
     return NextResponse.json(newWeek, { status: 201 });
   } catch (error) {

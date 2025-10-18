@@ -1,21 +1,18 @@
-import {
-  readTimesheets,
-} from "@/utils/timesheetHelper";
-import { NextResponse } from "next/server";
+import { readTimesheets } from "@/utils/timesheetHelper";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: NextRequest) {
   try {
-    const { id } = await params;
+    // Extract ID from URL
+    const segments = request.nextUrl.pathname.split("/");
+    const id = Number(segments[segments.length - 1]); // last segment is [id]
 
     if (!id) {
       return NextResponse.json({ error: "Timesheet ID required" }, { status: 400 });
     }
 
     const timesheets = readTimesheets();
-    const timesheet = timesheets.find((ts: any) => ts.id === parseInt(id));
+    const timesheet = timesheets.find((ts: { id: number }) => ts.id === id);
 
     if (!timesheet) {
       return NextResponse.json({ error: "Timesheet not found" }, { status: 404 });
